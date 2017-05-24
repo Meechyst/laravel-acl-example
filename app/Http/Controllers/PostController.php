@@ -6,14 +6,22 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function __construct(){
+      $this->middleware(['auth' => 'clearance'])->except('index', 'show');
+    }
+
     /**
-     * Display a listing of the resource.
+     * Show only 5 items at a time in descending order.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        //
+       $posts = Post::orderby('id', 'desc')->paginate(5);
+
+       return view('posts.index', compact('posts'));
     }
 
     /**
@@ -23,7 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -34,7 +42,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validation
+        $this->validate($request, [
+          'title' => 'required|max:100'
+          'body' => 'required'
+        ]);
+
+        //get the data from request
+        $title = $request['title'];
+        $body = $request['body'];
+
+        //create the post
+        $post = Post::create($request->only('title', 'body'));
+
+        //display a message upon successfully creating the post
+        return redirect()->route('posts.index')
+          ->with('flash_message', 'Post, '. $post->title . ' created');
     }
 
     /**
@@ -45,7 +68,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -56,7 +81,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -68,7 +95,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validation
+        $this->validate($request, [
+          'title' => 'required|max:100',
+          'body' => 'required'
+        ]);
+        //update the post
+        $post = Post::findOrFail($id);
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect()->route('posts.show', $post->id)
+          ->with('flash_message', 'Post' . $post->title . ' updated');
+
+
     }
 
     /**
@@ -79,6 +120,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('posts.index')
+          ->with('flash_message', 'Post' . $post->title . ' deleted');
     }
 }
