@@ -59,7 +59,7 @@ class PostController extends Controller
 
         //display a message upon successfully creating the post
         return redirect()->route('posts.index')
-          ->with('flash_message', 'Post, '. $post->title . ' created');
+          ->with('flash_message', 'Post '. $post->title . ' created');
     }
 
     /**
@@ -109,7 +109,7 @@ class PostController extends Controller
         $post->save();
 
         return redirect()->route('posts.show', $post->id)
-          ->with('flash_message', 'Post' . $post->title . ' updated');
+          ->with('flash_message', 'Post ' . $post->title . ' updated');
 
 
     }
