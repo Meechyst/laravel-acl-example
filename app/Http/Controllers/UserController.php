@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User
-use Auth;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 //Importing laravel-permission models
 use Spatie\Permission\Models\Role;
@@ -59,17 +59,17 @@ class UserController extends Controller
         $user = User::create($request->only('name', 'email', 'password'));
 
         //get roles field
-        $roles = request['roles'];
+        $roles = $request['roles'];
 
         //check if a role was selected
         if(isset($roles)){
           foreach($roles as $role){
             $role_r = Role::where('id', '=', $role)->firstOrFail();
-            $user->assigRole($role_r); //assign that role to user
+            $user->assignRole($role_r); //assign that role to user
           }
         }
 
-        return redirect()->route(users.index)
+        return redirect()->route('users.index')
           ->with('flash_message', 'User successfully created');
     }
 
@@ -125,9 +125,9 @@ class UserController extends Controller
         $user->fill($input)->save();
 
         if(isset($roles)){
-          $user->roles()->sync($roles)
+          $user->roles()->sync($roles);
         }else{
-          $user->roles()->detach()
+          $user->roles()->detach();
         }
 
         return redirect()->route('users.index')

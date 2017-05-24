@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
-use Auth;
-use Session;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -48,13 +48,11 @@ class PostController extends Controller
     {
         //Validation
         $this->validate($request, [
-          'title' => 'required|max:100'
-          'body' => 'required'
+          'title' => 'required|max:100',
+          'body' => 'required',
         ]);
 
-        //get the data from request
-        $title = $request['title'];
-        $body = $request['body'];
+
 
         //create the post
         $post = Post::create($request->only('title', 'body'));
