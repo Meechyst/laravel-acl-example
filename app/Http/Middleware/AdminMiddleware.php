@@ -19,11 +19,11 @@ class AdminMiddleware
     {
         $user = User::all()->count();
 
-        if(!($user == 1)) {
-            if (!Auth::user()->hasPermissionTo('Administer roles & permissions')) {
-                abort('401');
-            }
-        }
+//        if(!($user == 1)) {
+//            if (!Auth::user()->hasPermissionTo('Administer roles & permissions')) {
+//                abort('401');
+//            }
+//        }
 
         return $next($request);
     }

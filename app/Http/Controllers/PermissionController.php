@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
-//Importing laravel-permission models
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -89,9 +88,9 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
-        $permissions = Permission::findOrFail($id);
+        $permission = Permission::findOrFail($id);
 
-        return view('layouts.permissions.show', compact('permissions'));
+        return view('layouts.permissions.show', compact('permission'));
     }
 
     /**

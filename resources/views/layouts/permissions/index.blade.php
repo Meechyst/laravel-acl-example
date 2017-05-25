@@ -23,7 +23,7 @@
                 <tbody>
                 @foreach ($permissions as $permission)
                     <tr>
-                        <td>{{ $permission->name }}</td>
+                        <td><a href="{{ route('permissions.show', $permission->id ) }}"><b>{{ $permission->name }}</b></a></td>
                         <td>
                             <a href="{{ URL::to('permissions/'.$permission->id.'/edit') }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 
