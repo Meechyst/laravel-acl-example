@@ -21,6 +21,6 @@ Route::resource('users', 'UsersController');
 
 Route::resource('roles', 'RolesController');
 
-Route::resource('permission', 'PermissionController');
+Route::resource('permissions', 'PermissionController');
 
-Route::resource('post', 'PostController');
+Route::resource('posts', 'PostController');
