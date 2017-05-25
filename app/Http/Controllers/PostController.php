@@ -25,7 +25,7 @@ class PostController extends Controller
     {
        $posts = Post::orderby('id', 'desc')->paginate(5);
 
-       return view('posts.index', compact('posts'));
+       return view('layouts.posts.index', compact('posts'));
     }
 
     /**
@@ -35,7 +35,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('layouts.posts.create');
     }
 
     /**
@@ -72,7 +72,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        return view('posts.show', compact('post'));
+        return view('layouts.posts.show', compact('post'));
     }
 
     /**
@@ -85,7 +85,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        return view('posts.edit', compact('post'));
+        return view('layouts.posts.edit', compact('post'));
     }
 
     /**

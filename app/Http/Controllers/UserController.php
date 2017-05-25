@@ -26,7 +26,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('users.index', compact('users'));
+        return view('layouts.users.index', compact('users'));
     }
 
     /**
@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $roles = Role::get();
 
-        return view('users.create', ['roles' => $roles]);
+        return view('layouts.users.create', ['roles' => $roles]);
     }
 
     /**
@@ -83,7 +83,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('users.show', compact('user'));
+        return view('layouts.users.show', compact('user'));
     }
 
     /**
@@ -97,7 +97,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::get();
 
-        return view('users.edit', compact('user', 'roles'));
+        return view('layouts.users.edit', compact('user', 'roles'));
     }
 
     /**
