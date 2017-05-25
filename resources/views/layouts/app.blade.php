@@ -25,6 +25,7 @@
         ]) !!};
     </script>
     <script src="https://use.fontawesome.com/9712be8772.js"></script>
+    @yield('head')
 </head>
 <body>
     <div id="app">

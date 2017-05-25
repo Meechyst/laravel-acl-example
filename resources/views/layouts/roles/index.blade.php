@@ -25,7 +25,7 @@
                 @foreach ($roles as $role)
                     <tr>
 
-                        <td>{{ $role->name }}</td>
+                        <td><a href="{{ route('roles.show', $role->id ) }}"><b>{{ $role->name }}</b></a></td>
 
                         <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
                         <td>
