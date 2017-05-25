@@ -19,7 +19,7 @@ class PermissionController extends Controller
     public function __construct(){
         $this->middleware(['auth', 'isAdmin']);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -89,7 +89,7 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
-        $permissions = Permission::all();
+        $permissions = Permission::findOrFail($id);
 
         return view('permissions.show', compact('permissions'));
     }
