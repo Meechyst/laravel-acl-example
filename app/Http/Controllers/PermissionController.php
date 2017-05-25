@@ -39,7 +39,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        $roles = Roles::get();
+        $roles = Role::get();
 
         return view('permissions.create', compact('roles'));
     }
