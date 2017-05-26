@@ -1596,6 +1596,9 @@ pre code, table {
 
 dl, ol, ul {
   margin-top: 0
+
+list-style-type: none;
+
 }
 
 blockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child, ol ol, ol ul, ul ol, ul ul {

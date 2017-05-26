@@ -16,9 +16,11 @@
         .content {
             text-align: center;
         }
+
         .title {
             font-size: 84px;
         }
+
         .links > a {
             color: #636b6f;
             padding: 0 25px;
@@ -28,6 +30,7 @@
             text-decoration: none;
             text-transform: uppercase;
         }
+
         .m-b-md {
             margin-bottom: 30px;
         }
@@ -35,22 +38,27 @@
 @endsection
 @section('content')
 
-        <div class="content">
-            <div class="title m-b-md">
-                Laravel ACL System
-            </div>
-            <div class="m-b-md">
-<h3>Based on </h3>
-            </div>
-
-
-            <div class="links">
-                <a href="https://laravel.com/docs">Documentation</a>
-                <a href="https://laracasts.com">Laracasts</a>
-                <a href="https://laravel-news.com">News</a>
-                <a href="https://forge.laravel.com">Forge</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
-            </div>
+    <div class="content">
+        <div class="title m-b-md">
+            Laravel ACL System Example
         </div>
+        <div class="m-b-md">
+            <h3>Based on <a href="https://github.com/spatie">Spatie</a>'s <a
+                        href="https://github.com/spatie/laravel-permission">laravel-permmission</a> package</h3>
+
+            <h5>Credit to <a href="https://scotch.io/@caleboki">Caleb Oki</a> for his <a
+                        href="https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission">tutorial</a>
+            </h5>
+        </div>
+        <br/>
+
+        <div class="links">
+            <a href="{{ route('posts.index') }}">Posts</a>
+            <a href={{route('roles.index')}}>Roles</a>
+            <a href="{{route('permissions.index')}}">Permissions</a>
+            <a href="{{route('users.index')}}">Users</a>
+            <a href="https://github.com/Meechyst/laravel-acl-example">GitHub</a>
+        </div>
+    </div>
 
 @endsection
