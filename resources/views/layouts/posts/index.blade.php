@@ -6,7 +6,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Posts</h3></div>
                     <div class="panel-heading">Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}</div>
-                    @foreach ($posts as $i => $post)
+                    @foreach ($posts as $post)
                         <div class="panel-body">
                             <li style="list-style-type: none">
                                 <a href="{{ route('posts.show', $post->id ) }}"><b>{{ $post->title }}</b><br>
@@ -15,12 +15,21 @@
                                         {{  str_limit($post->body, 100) }} {{-- Limit teaser to 100 characters --}}
                                     </p>
                                 </a>
-                                <small><i><em class="pull-right" id="{{$i}}"
-                                              onmouseout="document.getElementById(<?php echo $i ?>).innerHTML ='<?php echo ' | ' . $post->created_at->diffForHumans(); ?>'"
-                                              onmousemove="document.getElementById(<?php echo $i ?>).innerHTML ='<?php echo ' | ' . $post->created_at->format('Y - m - d'); ?>'">
-                                            | {{$post->created_at->diffForHumans() }} </em></i>
-                                    <a href="{{ route('users.show', $post->user->id) }}"><em
-                                                class="pull-right">{{$post->user->name}} &nbsp;</em></a></small>
+                                <small>
+                                    <i>
+                                        <div class="pull-right" data-toggle="tooltip" data-placement="top"
+                                             title="{{$post->created_at->format('Y - m - d')}}">&nbsp;|&nbsp;{{$post->created_at->diffForHumans()}}
+                                        </div>
+
+                                            <a class="pull-right" data-toggle="tooltip"
+                                                                   data-placement="top"
+                                                                   title="{{count($post->user->posts)}} Posts"
+                                                                   href="{{ route('users.show', $post->user->id) }}">
+                                                <div class="pull-right">{{$post->user->name}}</div>
+                                            </a>
+
+                                    </i>
+                                </small>
                                 <br/>
                                 <hr/>
                             </li>

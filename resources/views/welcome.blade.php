@@ -59,6 +59,7 @@
             <a href="{{route('users.index')}}">Users</a>
             <a href="https://github.com/Meechyst/laravel-acl-example">GitHub</a>
         </div>
+
     </div>
 
 @endsection

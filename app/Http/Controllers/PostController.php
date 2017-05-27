@@ -56,7 +56,8 @@ class PostController extends Controller
 
 
         //create the post
-        $post = Post::create($request->only('title', 'body'));
+        $post = Auth::user()->posts()->create($request->all());
+
 
         //display a message upon successfully creating the post
         return redirect()->route('posts.index')
@@ -72,6 +73,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
+
 
         return view('layouts.posts.show', compact('post'));
     }
