@@ -11,7 +11,7 @@
         <hr>
         <p class="lead">{{ $post->body }} </p>
         <hr>
-        {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id] ]) !!}
+        {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id], 'class' => 'deleteGroup' ]) !!}
         <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
 
         <div class="pull-right" data-toggle="tooltip" data-placement="top"

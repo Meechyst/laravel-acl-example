@@ -74,7 +74,7 @@ class RoleController extends Controller
 
         return redirect()->route('roles.index')
             ->with('flash_message',
-                'Role'. $role->name.' added!');
+                'Role '. $role->name.' added!');
     }
 
     /**

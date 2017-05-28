@@ -34,7 +34,7 @@
                         <td>
                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id] ]) !!}
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'class' => 'deleteGroup' ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                             {!! Form::close() !!}
 
