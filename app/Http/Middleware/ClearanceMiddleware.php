@@ -48,6 +48,23 @@ class ClearanceMiddleware
                 return $next($request);
             }
         }
+
+        if($request->is('users/*/edit')){
+            if(!Auth::user()->hasPermissionTo('Edit User')){
+                abort('401');
+            }
+            else{
+                return $next($request);
+            }
+        }
+        if($request->is('users/create')){
+            if(!Auth::user()->hasPermissionTo('Create User')){
+                abort('401');
+            }
+            else{
+                return $next($request);
+            }
+        }
         return $next($request);
     }
 }
