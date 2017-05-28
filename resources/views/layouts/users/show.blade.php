@@ -8,7 +8,7 @@
 
         <h1>{{ $user->name }}</h1>
         @if(!empty($user->roles))
-            <h5>{{$user->roles()->pluck('name')->implode(' ')}}</h5>
+            <h3><a href="{{ route('roles.show', $user->roles()->pluck('id')->implode(' '))  }}">({{$user->roles()->pluck('name')->implode(' ')}})</a></h3>
         @endif
         <hr>
         <p class="lead">{{ $user->email }} </p>
