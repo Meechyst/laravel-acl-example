@@ -18,7 +18,9 @@
                     <th>Email</th>
                     <th>Date/Time Added</th>
                     <th>User Roles</th>
+                    @role('Admin')
                     <th>Operations</th>
+                    @endrole
                 </tr>
                 </thead>
 
@@ -31,6 +33,8 @@
                         </td>
                         <td>{{ $user->created_at->format('F d, Y - h:ia') }}</td>
                         <td><a href="{{ route('roles.show', $user->roles()->pluck('id')->implode(' '))  }}">{{  $user->roles()->pluck('name')->implode(' ') }}</a></td>{{-- Retrieve array of roles associated to a user and convert to string --}}
+
+                        @role('Admin')
                         <td>
                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 
@@ -39,6 +43,7 @@
                             {!! Form::close() !!}
 
                         </td>
+                        @endrole
                     </tr>
                 @endforeach
                 </tbody>
