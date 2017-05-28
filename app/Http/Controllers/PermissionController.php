@@ -102,8 +102,8 @@ class PermissionController extends Controller
     public function edit($id)
     {
         $permission = Permission::findOrFail($id);
-
-        return view('layouts.permissions.edit', compact('permission'));
+        $roles = Role::all();
+        return view('layouts.permissions.edit', compact('permission', 'roles'));
     }
 
     /**
@@ -120,10 +120,31 @@ class PermissionController extends Controller
         //validation
         $this->validate($request, [
             'name' => 'required|max:40',
+            'roles' => 'required'
         ]);
 
-        $input = $request->all();
-        $permission->fill($input)->save();
+
+        $inputWo = $request->except(['roles']);
+        $roles = $request['roles'];
+        $permission->fill($inputWo)->save();
+
+
+
+        //remove all permissions associated with role
+
+        //re-assign given roles
+
+        foreach($roles as $role){
+            //permission in db
+            $role = Permission::where('id', '=', $role)->firstOrFail();
+            //Assign permission to role
+            $permission->assignRole($role);
+        }
+
+        return redirect()->route('roles.index')
+            ->with('flash_message', 'Role ' .$role->name. ' updated');
+
+
 
         return redirect()->route('permissions.index')
             ->with('flash_message', 'Permission ' .$permission->name. ' updated');

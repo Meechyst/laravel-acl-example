@@ -14,6 +14,13 @@
             {{ Form::label('name', 'Permission Name') }}
             {{ Form::text('name', null, array('class' => 'form-control')) }}
         </div>
+        <h5><b>Assign Permission to roles</b></h5>
+        @foreach ($roles as $role)
+
+            {{Form::checkbox('roles[]',  $role->id, $permission->$roles ) }}
+            {{Form::label($role->name, ucfirst($role->name)) }}<br>
+
+        @endforeach
         <br>
         {{ Form::submit('Edit', array('class' => 'btn btn-primary')) }}
 
