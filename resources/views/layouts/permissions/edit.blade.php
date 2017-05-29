@@ -14,11 +14,11 @@
             {{ Form::label('name', 'Permission Name') }}
             {{ Form::text('name', null, array('class' => 'form-control')) }}
         </div>
-        <h5><b>Assign Permission to roles</b></h5>
+        <br>
+        <h4><b>Roles with this permission</b></h4>
         @foreach ($roles as $role)
 
-            {{Form::checkbox('roles[]',  $role->id, $permission->$roles ) }}
-            {{Form::label($role->name, ucfirst($role->name)) }}<br>
+              - {{Form::label($role->name, ucfirst($role->name)) }}<br>
 
         @endforeach
         <br>

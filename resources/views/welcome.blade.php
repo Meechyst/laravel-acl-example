@@ -59,6 +59,15 @@
             <a href="{{route('users.index')}}">Users</a>
             <a href="https://github.com/Meechyst/laravel-acl-example">GitHub</a>
         </div>
+        <br><br><br>  
+        <div class="links">
+          <a class="github-button" data-size="large" href="https://github.com/meechyst/laravel-acl-example"
+          aria-label="Star meechyst/laravel-acl-example on GitHub">Star</a>
+          <a class="github-button" data-size="large" href="https://github.com/meechyst/laravel-acl-example/fork"
+          aria-label="Fork meechyst/laravel-acl-example on GitHub">Fork</a>
+          <a class="github-button" data-size="large" href="https://github.com/meechyst/laravel-acl-example/archive/master.zip"
+          aria-label="Download meechyst/laravel-acl-example on GitHub">Download</a>
+        </div>
 
     </div>
 
